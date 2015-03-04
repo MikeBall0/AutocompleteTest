@@ -1,0 +1,10 @@
+{
+	"name" : "Autocomplete",
+	"version" : "0.1.0",
+	"author" : "Mike",
+	"main" : "index.js",
+	"private" : true,
+	"dependencies" : {
+		"express" : "4.12.x"
+	}
+}

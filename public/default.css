@@ -1,0 +1,14 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: black;
+	text-align: center;
+}
+textarea {
+	border-style: none;
+	width: 90vw;
+	height: 95vh;
+	resize: none;
+}
