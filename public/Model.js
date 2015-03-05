@@ -5,15 +5,22 @@ var Auto = Auto || {};
 Auto.Model = {
 	WordsModel: {},
 	WordPairsModel: {},
-	train: function(sourceText, fn) {
+	trainOnFile: function(file, fn) {
 		var that = this;
-		var loader = new Auto.Loader(sourceText, function() {
-			var Words = Auto.helper.splitWords(loader.content);
-			var WordPairs = Auto.helper.pairWords(Words);
-			that.accumulateWords(Words);
-			that.accumulateWordPairs(WordPairs);
+		var loader = new Auto.Loader(file, function() {
+			that.train(loader.content);
 			if (fn) fn();
 		});
+	},
+	train: function(text) {
+		var words = Auto.helper.splitWords(text);
+		var wordPairs = Auto.helper.pairWords(words);
+		this.accumulateWords(words);
+		this.accumulateWordPairs(wordPairs);
+	},
+	reset: function() {
+		this.WordsModel = {};
+		this.WordPairsModel = {};
 	},
 	predict: function(previousWord, beginNextWord) {
 		var prevDist = {};
